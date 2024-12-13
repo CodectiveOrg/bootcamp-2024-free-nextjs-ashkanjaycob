@@ -1,11 +1,9 @@
-export default async function Home() {
-  
-  type User = {
-    id: number;
-    name: string;
-    username: string;
-  };
+type User = {
+  id: number;
+  username: string;
+};
 
+export default async function Home() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users", {
     cache: "no-store",
   });
