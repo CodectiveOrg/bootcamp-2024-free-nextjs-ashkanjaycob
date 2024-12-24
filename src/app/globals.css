@@ -69,3 +69,8 @@ a {
 
   text-decoration: none;
 }
+
+body {
+  background-color: var(--color-default-background);
+  color: var(--color-default-foreground);
+}
