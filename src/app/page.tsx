@@ -1,27 +1,27 @@
-type User = {
-  id: number;  
-  username: string;
-};
+import { ReactElement } from "react";
 
-export default async function Home() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users", {
-    cache: "no-store",
-  });
+import GlobalSearchBoxComponent from "@/components/global-search-box/global-search-box.component";
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch users");
-  }
+import TabibLog from "@/assets/logo/TabibPic.png";
 
-  const users: User[] = await res.json();
+import styles from "./page.module.css";
+import Image from "next/image";
 
+export default function Home(): ReactElement {
   return (
-    <div>
-      <h1>سلام دنیا!</h1>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username}</li>
-        ))}
-      </ul>
+    <div className={styles.home}>
+      <h1>
+        <Image className={styles.logo} src={TabibLog} alt="tabib" />
+        طبیب
+      </h1>
+      <GlobalSearchBoxComponent />
+      <div className={styles.history}>
+        <div className={styles.title}>آخرین جستجوهای شما</div>
+        <ul>
+          <li>ارتوپد</li>
+          <li>قلب و عروق</li>
+        </ul>
+      </div>
     </div>
   );
 }
