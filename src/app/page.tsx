@@ -5,6 +5,7 @@ import GlobalSearchBoxComponent from "@/components/global-search-box/global-sear
 import TabibLog from "@/assets/logo/TabibPic.png";
 
 import styles from "./page.module.css";
+
 import Image from "next/image";
 
 export default function Home(): ReactElement {
