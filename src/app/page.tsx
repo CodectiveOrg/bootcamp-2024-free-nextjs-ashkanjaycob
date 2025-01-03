@@ -20,7 +20,8 @@ export default function Home(): ReactElement {
         <div className={styles.title}>آخرین جستجوهای شما</div>
         <ul>
           <li>ارتوپد</li>
-          <li>قلب و عروق</li>
+          <li>قلب و عروق</li> 
+          
         </ul>
       </div>
     </div>
