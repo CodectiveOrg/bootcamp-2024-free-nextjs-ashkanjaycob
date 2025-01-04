@@ -149,10 +149,12 @@ const SearchPage: NextPage = () => {
           {filteredDoctors.map((doctor) => (
             <div key={doctor.id} className={styles["result-card"]}>
               <h3>{doctor.name}</h3>
-              <p>تخصص: {doctor.specialty}</p>
+            <div className={styles["result-card-info"]}>
+            <p>تخصص: {doctor.specialty}</p>
               <p>شهر: {doctor.location}</p>
               <p>سابقه: {doctor.experience} سال</p>
               <p>ویزیت: {doctor.visitFee.toLocaleString()} تومان</p>
+            </div>
             </div>
           ))}
         </div>
