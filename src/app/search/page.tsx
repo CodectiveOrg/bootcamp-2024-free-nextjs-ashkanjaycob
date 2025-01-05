@@ -90,24 +90,6 @@ const SearchPage: NextPage = () => {
           <h2 className={styles["filter-title"]}>فیلترها</h2>
 
           <div className={styles["filter-group"]}>
-            <label>حداقل امتیاز</label>
-            <select
-              value={selectedFilters.rating}
-              onChange={(e) =>
-                setSelectedFilters({
-                  ...selectedFilters,
-                  rating: e.target.value,
-                })
-              }
-            >
-              <option value="">همه</option>
-              <option value="4.8">۴.۸ و بالاتر ⭐⭐⭐⭐⭐</option>
-              <option value="4.5">۴.۵ و بالاتر ⭐⭐⭐⭐½</option>
-              <option value="4.0">۴.۰ و بالاتر ⭐⭐⭐⭐</option>
-            </select>
-          </div>
-
-          <div className={styles["filter-group"]}>
             <label>تخصص</label>
             <select
               value={selectedFilters.specialty}
@@ -124,6 +106,24 @@ const SearchPage: NextPage = () => {
                   {specialty}
                 </option>
               ))}
+            </select>
+          </div>
+
+          <div className={styles["filter-group"]}>
+            <label>حداقل امتیاز</label>
+            <select
+              value={selectedFilters.rating}
+              onChange={(e) =>
+                setSelectedFilters({
+                  ...selectedFilters,
+                  rating: e.target.value,
+                })
+              }
+            >
+              <option value="">همه</option>
+              <option value="4.8">۴.۸ و بالاتر ⭐⭐⭐⭐⭐</option>
+              <option value="4.5">۴.۵ و بالاتر ⭐⭐⭐⭐½</option>
+              <option value="4.0">۴.۰ و بالاتر ⭐⭐⭐⭐</option>
             </select>
           </div>
 

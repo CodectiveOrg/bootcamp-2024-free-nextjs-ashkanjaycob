@@ -85,11 +85,19 @@
 }
 
 .filter-section {
+  max-height: fit-content;
   inline-size: 250px;
   padding: 1rem;
   background-color: var(--color-gray-16);
   border-radius: var(--border-radius);
   border: 1px solid var(--color-gray-20);
+}
+
+@media (min-width: 768px) {
+  .filter-section {
+    position: sticky;
+    top: 2rem;
+  }
 }
 
 .filter-title {
