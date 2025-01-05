@@ -189,55 +189,65 @@ const SearchPage: NextPage = () => {
         </div>
 
         <div className={styles["results-section"]}>
-          {filteredDoctors.map((doctor) => (
-            <div key={doctor.id} className={styles["result-card"]}>
-              <div className={styles["doctor-image"]}>
-                <Image
-                  src={doctor.image}
-                  alt={doctor.name}
-                  width={100}
-                  height={100}
-                  className={styles.avatar}
-                />
-                {doctor.isVerified && (
-                  <span className={styles["verified-badge"]}>✓</span>
-                )}
-              </div>
-
-              <div className={styles["doctor-info"]}>
-                <h3 className={styles["doctor-name"]}>{doctor.name}</h3>
-                <p className={styles["doctor-brief"]}>{doctor.brief}</p>
-
-                <div className={styles["rating-container"]}>
-                  <span className={styles.rating}>
-                    ⭐ {doctor.averageRating}
-                  </span>
-                  <span className={styles["total-votes"]}>
-                    ({doctor.totalVotes} رای)
-                  </span>
+          {filteredDoctors.length > 0 ? (
+            filteredDoctors.map((doctor) => (
+              <div key={doctor.id} className={styles["result-card"]}>
+                <div className={styles["doctor-image"]}>
+                  <Image
+                    src={doctor.image}
+                    alt={doctor.name}
+                    width={100}
+                    height={100}
+                    className={styles.avatar}
+                  />
+                  {doctor.isVerified && (
+                    <span className={styles["verified-badge"]}>✓</span>
+                  )}
                 </div>
 
-                <div className={styles["badges"]}>
-                  {doctor.badges.map((badge, index) => (
-                    <span key={index} className={styles.badge}>
-                      {badge}
+                <div className={styles["doctor-info"]}>
+                  <h3 className={styles["doctor-name"]}>{doctor.name}</h3>
+                  <p className={styles["doctor-brief"]}>{doctor.brief}</p>
+
+                  <div className={styles["rating-container"]}>
+                    <span className={styles.rating}>
+                      ⭐ {doctor.averageRating}
                     </span>
-                  ))}
-                </div>
+                    <span className={styles["total-votes"]}>
+                      ({doctor.totalVotes} رای)
+                    </span>
+                  </div>
 
-                <p className={styles.address}>{doctor.address}</p>
+                  <div className={styles["badges"]}>
+                    {doctor.badges.map((badge, index) => (
+                      <span key={index} className={styles.badge}>
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
 
-                <div className={styles["appointment-info"]}>
-                  <span className={styles.availability}>
-                    {formatAvailability(doctor.firstAvailableAppointment)}
-                  </span>
-                  <span className={styles["visit-fee"]}>
-                    ویزیت: {doctor.visitFee.toLocaleString()} تومان
-                  </span>
+                  <p className={styles.address}>{doctor.address}</p>
+
+                  <div className={styles["appointment-info"]}>
+                    <span className={styles.availability}>
+                      {formatAvailability(doctor.firstAvailableAppointment)}
+                    </span>
+                    <span className={styles["visit-fee"]}>
+                      ویزیت: {doctor.visitFee.toLocaleString()} تومان
+                    </span>
+                  </div>
                 </div>
+              </div>
+            ))
+          ) : (
+            <div className={styles["error-card"]}>
+              <div className={styles["error-content"]}>
+                <span className={styles["error-emoji"]}>🔍</span>
+                <h3>پزشکی یافت نشد</h3>
+                <p>لطفاً معیارهای جستجو را تغییر دهید</p>
               </div>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
