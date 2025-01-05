@@ -4,22 +4,47 @@ import { NextPage } from "next";
 import { useState } from "react";
 import styles from "./search-page.module.css";
 import { useDoctors } from "@/contexts/DoctorsContext";
+import Image from "next/image";
+
+interface ExtendedFilters {
+  specialty: string;
+  location: string;
+  priceRange: string;
+  experience: string;
+  rating: string;
+}
 
 const SearchPage: NextPage = () => {
   const { filterOptions, searchDoctors } = useDoctors();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilters, setSelectedFilters] = useState({
+  const [selectedFilters, setSelectedFilters] = useState<ExtendedFilters>({
     specialty: "",
     location: "",
     priceRange: "",
     experience: "",
+    rating: "",
   });
 
-  const filteredDoctors = searchDoctors(searchQuery, selectedFilters);
+  const filteredDoctors = searchDoctors(searchQuery, selectedFilters).filter(
+    (doctor) => {
+      if (selectedFilters.rating) {
+        const minRating = parseFloat(selectedFilters.rating);
+        return doctor.averageRating >= minRating;
+      }
+      return true;
+    },
+  );
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Additional search handling if needed
+  };
+
+  const formatAvailability = (time: string) => {
+    return time.startsWith("امروز")
+      ? "🟢 " + time
+      : time.startsWith("فردا")
+        ? "🟡 " + time
+        : "⚪ " + time;
   };
 
   return (
@@ -48,7 +73,7 @@ const SearchPage: NextPage = () => {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="جستجو کنید..."
+          placeholder="نام پزشک یا تخصص را جستجو کنید..."
           className={styles.input}
           dir="rtl"
         />
@@ -63,6 +88,24 @@ const SearchPage: NextPage = () => {
       <div className={styles["search-content"]}>
         <div className={styles["filter-section"]}>
           <h2 className={styles["filter-title"]}>فیلترها</h2>
+
+          <div className={styles["filter-group"]}>
+            <label>حداقل امتیاز</label>
+            <select
+              value={selectedFilters.rating}
+              onChange={(e) =>
+                setSelectedFilters({
+                  ...selectedFilters,
+                  rating: e.target.value,
+                })
+              }
+            >
+              <option value="">همه</option>
+              <option value="4.8">۴.۸ و بالاتر ⭐⭐⭐⭐⭐</option>
+              <option value="4.5">۴.۵ و بالاتر ⭐⭐⭐⭐½</option>
+              <option value="4.0">۴.۰ و بالاتر ⭐⭐⭐⭐</option>
+            </select>
+          </div>
 
           <div className={styles["filter-group"]}>
             <label>تخصص</label>
@@ -148,13 +191,51 @@ const SearchPage: NextPage = () => {
         <div className={styles["results-section"]}>
           {filteredDoctors.map((doctor) => (
             <div key={doctor.id} className={styles["result-card"]}>
-              <h3>{doctor.name}</h3>
-            <div className={styles["result-card-info"]}>
-            <p>تخصص: {doctor.specialty}</p>
-              <p>شهر: {doctor.location}</p>
-              <p>سابقه: {doctor.experience} سال</p>
-              <p>ویزیت: {doctor.visitFee.toLocaleString()} تومان</p>
-            </div>
+              <div className={styles["doctor-image"]}>
+                <Image
+                  src={doctor.image}
+                  alt={doctor.name}
+                  width={100}
+                  height={100}
+                  className={styles.avatar}
+                />
+                {doctor.isVerified && (
+                  <span className={styles["verified-badge"]}>✓</span>
+                )}
+              </div>
+
+              <div className={styles["doctor-info"]}>
+                <h3 className={styles["doctor-name"]}>{doctor.name}</h3>
+                <p className={styles["doctor-brief"]}>{doctor.brief}</p>
+
+                <div className={styles["rating-container"]}>
+                  <span className={styles.rating}>
+                    ⭐ {doctor.averageRating}
+                  </span>
+                  <span className={styles["total-votes"]}>
+                    ({doctor.totalVotes} رای)
+                  </span>
+                </div>
+
+                <div className={styles["badges"]}>
+                  {doctor.badges.map((badge, index) => (
+                    <span key={index} className={styles.badge}>
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <p className={styles.address}>{doctor.address}</p>
+
+                <div className={styles["appointment-info"]}>
+                  <span className={styles.availability}>
+                    {formatAvailability(doctor.firstAvailableAppointment)}
+                  </span>
+                  <span className={styles["visit-fee"]}>
+                    ویزیت: {doctor.visitFee.toLocaleString()} تومان
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>

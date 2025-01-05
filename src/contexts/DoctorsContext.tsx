@@ -1,57 +1,184 @@
 "use client";
 
-import { createContext, useContext, ReactNode, useState, useMemo } from "react";
+import { createContext, useContext, ReactNode, useMemo } from "react";
 
 export interface Doctor {
-  id: number;
+  id: string;
   name: string;
+  image: string;
+  isVerified: boolean;
+  averageRating: number;
+  totalVotes: number;
+  address: string;
+  firstAvailableAppointment: string;
+  brief: string;
+  badges: string[];
   specialty: string;
   experience: number;
   location: string;
   visitFee: number;
 }
 
-// Initial doctors data
 const doctorsData: Doctor[] = [
   {
-    id: 1,
+    id: "1",
     name: "دکتر علی محمدی",
+    image: "/getImage/doctors/doctor1.jpg",
+    isVerified: true,
+    averageRating: 4.8,
+    totalVotes: 156,
+    address: "تهران، خیابان ولیعصر، بالاتر از میدان ونک، ساختمان پزشکان نور",
+    firstAvailableAppointment: "فردا صبح",
+    brief: "متخصص قلب و عروق، فوق تخصص آنژیوپلاستی",
+    badges: ["خوش برخورد", "به موقع"],
     specialty: "قلب و عروق",
     experience: 15,
     location: "تهران",
     visitFee: 250000,
   },
   {
-    id: 2,
+    id: "2",
     name: "دکتر سارا احمدی",
+    image: "/getImage/doctors/doctor2.jpg",
+    isVerified: true,
+    averageRating: 4.9,
+    totalVotes: 203,
+    address: "شیراز، خیابان زند، مجتمع پزشکی حکیم",
+    firstAvailableAppointment: "امروز عصر",
+    brief: "متخصص پوست و مو، زیبایی",
+    badges: ["کمترین معطلی", "محبوب بیماران"],
     specialty: "پوست و مو",
     experience: 8,
     location: "شیراز",
     visitFee: 180000,
   },
   {
-    id: 3,
+    id: "3",
     name: "دکتر رضا کریمی",
+    image: "/getImage/doctors/doctor3.jpg",
+    isVerified: true,
+    averageRating: 4.7,
+    totalVotes: 189,
+    address: "تهران، خیابان انقلاب، ساختمان پزشکان امید",
+    firstAvailableAppointment: "امروز صبح",
+    brief: "متخصص داخلی و گوارش",
+    badges: ["دقیق و حرفه‌ای", "پاسخگویی عالی"],
     specialty: "داخلی",
     experience: 12,
     location: "تهران",
-    visitFee: 200000,
+    visitFee: 220000,
   },
   {
-    id: 4,
+    id: "4",
     name: "دکتر مریم حسینی",
+    image: "/getImage/doctors/doctor4.jpg",
+    isVerified: true,
+    averageRating: 4.6,
+    totalVotes: 132,
+    address: "مشهد، بلوار ملک‌آباد، کلینیک پزشکان جوان",
+    firstAvailableAppointment: "فردا عصر",
+    brief: "متخصص اطفال و نوزادان",
+    badges: ["صبور", "مهربان"],
     specialty: "کودکان",
     experience: 10,
     location: "مشهد",
     visitFee: 150000,
   },
   {
-    id: 5,
+    id: "5",
     name: "دکتر امیر رضایی",
+    image: "/getImage/doctors/doctor5.jpg",
+    isVerified: true,
+    averageRating: 4.9,
+    totalVotes: 215,
+    address: "اصفهان، خیابان چهار باغ عباسی، ساختمان پزشکان زیتون",
+    firstAvailableAppointment: "امروز عصر",
+    brief: "متخصص قلب و عروق، فوق تخصص جراحی قلب",
+    badges: ["دقیق", "کمترین معطلی"],
     specialty: "قلب و عروق",
     experience: 20,
     location: "اصفهان",
     visitFee: 300000,
+  },
+  {
+    id: "6",
+    name: "دکتر زهرا صابری",
+    image: "/getImage/doctors/doctor6.jpg",
+    isVerified: true,
+    averageRating: 4.8,
+    totalVotes: 172,
+    address: "تبریز، خیابان آزادی، مجتمع پزشکان سپید",
+    firstAvailableAppointment: "فردا صبح",
+    brief: "متخصص زنان و زایمان",
+    badges: ["محبوب بیماران", "خوش برخورد"],
+    specialty: "زنان و زایمان",
+    experience: 18,
+    location: "تبریز",
+    visitFee: 230000,
+  },
+  {
+    id: "7",
+    name: "دکتر حسن نادری",
+    image: "/getImage/doctors/doctor7.jpg",
+    isVerified: true,
+    averageRating: 4.5,
+    totalVotes: 95,
+    address: "کرج، میدان شهید بهشتی، کلینیک نیکان",
+    firstAvailableAppointment: "امروز ظهر",
+    brief: "متخصص ارتوپدی، جراحی استخوان و مفاصل",
+    badges: ["دقیق", "کمترین معطلی"],
+    specialty: "ارتوپدی",
+    experience: 14,
+    location: "کرج",
+    visitFee: 280000,
+  },
+  {
+    id: "8",
+    name: "دکتر لیلا شریفی",
+    image: "/getImage/doctors/doctor8.jpg",
+    isVerified: true,
+    averageRating: 4.7,
+    totalVotes: 108,
+    address: "اهواز، خیابان امانیه، ساختمان پزشکان سینا",
+    firstAvailableAppointment: "پس‌فردا صبح",
+    brief: "متخصص چشم، فوق تخصص جراحی قرنیه",
+    badges: ["خوش برخورد", "متخصص حرفه‌ای"],
+    specialty: "چشم",
+    experience: 12,
+    location: "اهواز",
+    visitFee: 250000,
+  },
+  {
+    id: "9",
+    name: "دکتر محمد عباسی",
+    image: "/getImage/doctors/doctor9.jpg",
+    isVerified: true,
+    averageRating: 4.6,
+    totalVotes: 140,
+    address: "رشت، خیابان مطهری، کلینیک رازی",
+    firstAvailableAppointment: "فردا عصر",
+    brief: "متخصص مغز و اعصاب، فوق تخصص جراحی مغز",
+    badges: ["پاسخگویی عالی", "به موقع"],
+    specialty: "مغز و اعصاب",
+    experience: 16,
+    location: "رشت",
+    visitFee: 270000,
+  },
+  {
+    id: "10",
+    name: "دکتر فاطمه قاسمی",
+    image: "/getImage/doctors/doctor10.jpg",
+    isVerified: true,
+    averageRating: 4.9,
+    totalVotes: 187,
+    address: "قزوین، خیابان فلسطین، ساختمان پزشکان ارم",
+    firstAvailableAppointment: "امروز صبح",
+    brief: "متخصص دندانپزشکی زیبایی",
+    badges: ["مهارت بالا", "خوش برخورد"],
+    specialty: "دندانپزشکی",
+    experience: 10,
+    location: "قزوین",
+    visitFee: 200000,
   },
 ];
 
@@ -78,8 +205,12 @@ const DoctorsContext = createContext<DoctorsContextType | undefined>(undefined);
 export function DoctorsProvider({ children }: { children: ReactNode }) {
   const filterOptions = useMemo(
     () => ({
-      specialty: [...new Set(doctorsData.map((doctor) => doctor.specialty))],
-      location: [...new Set(doctorsData.map((doctor) => doctor.location))],
+      specialty: Array.from(
+        new Set(doctorsData.map((doctor) => doctor.specialty)),
+      ),
+      location: Array.from(
+        new Set(doctorsData.map((doctor) => doctor.location)),
+      ),
       experience: [
         { label: "کمتر از ۱۰ سال", value: "0-10" },
         { label: "۱۰ تا ۱۵ سال", value: "10-15" },
