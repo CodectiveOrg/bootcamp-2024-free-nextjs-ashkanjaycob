@@ -2,6 +2,14 @@
 
 import { createContext, useContext, ReactNode, useMemo } from "react";
 
+const doctorImages = Array.from({ length: 10 }, (_, i) => {
+  const index = i + 1;
+  return {
+    id: String(index),
+    image: require(`@/assets/doctors/doctor${index}.webp`).default.src,
+  };
+}).reduce((acc, { id, image }) => ({ ...acc, [id]: image }), {});
+
 export interface Doctor {
   id: string;
   name: string;
@@ -23,7 +31,7 @@ const doctorsData: Doctor[] = [
   {
     id: "1",
     name: "دکتر علی محمدی",
-    image: "/getImage/doctors/doctor1.jpg",
+    image: doctorImages["1"],
     isVerified: true,
     averageRating: 4.8,
     totalVotes: 156,
@@ -39,7 +47,7 @@ const doctorsData: Doctor[] = [
   {
     id: "2",
     name: "دکتر سارا احمدی",
-    image: "/getImage/doctors/doctor2.jpg",
+    image: doctorImages["2"],
     isVerified: true,
     averageRating: 4.9,
     totalVotes: 203,
@@ -55,7 +63,7 @@ const doctorsData: Doctor[] = [
   {
     id: "3",
     name: "دکتر رضا کریمی",
-    image: "/getImage/doctors/doctor3.jpg",
+    image: doctorImages["3"],
     isVerified: true,
     averageRating: 4.7,
     totalVotes: 189,
@@ -71,7 +79,7 @@ const doctorsData: Doctor[] = [
   {
     id: "4",
     name: "دکتر مریم حسینی",
-    image: "/getImage/doctors/doctor4.jpg",
+    image: doctorImages["4"],
     isVerified: true,
     averageRating: 4.6,
     totalVotes: 132,
@@ -87,7 +95,7 @@ const doctorsData: Doctor[] = [
   {
     id: "5",
     name: "دکتر امیر رضایی",
-    image: "/getImage/doctors/doctor5.jpg",
+    image: doctorImages["5"],
     isVerified: true,
     averageRating: 4.9,
     totalVotes: 215,
@@ -103,7 +111,7 @@ const doctorsData: Doctor[] = [
   {
     id: "6",
     name: "دکتر زهرا صابری",
-    image: "/getImage/doctors/doctor6.jpg",
+    image: doctorImages["6"],
     isVerified: true,
     averageRating: 4.8,
     totalVotes: 172,
@@ -119,7 +127,7 @@ const doctorsData: Doctor[] = [
   {
     id: "7",
     name: "دکتر حسن نادری",
-    image: "/getImage/doctors/doctor7.jpg",
+    image: doctorImages["7"],
     isVerified: true,
     averageRating: 4.5,
     totalVotes: 95,
@@ -135,7 +143,7 @@ const doctorsData: Doctor[] = [
   {
     id: "8",
     name: "دکتر لیلا شریفی",
-    image: "/getImage/doctors/doctor8.jpg",
+    image: doctorImages["8"],
     isVerified: true,
     averageRating: 4.7,
     totalVotes: 108,
@@ -151,7 +159,7 @@ const doctorsData: Doctor[] = [
   {
     id: "9",
     name: "دکتر محمد عباسی",
-    image: "/getImage/doctors/doctor9.jpg",
+    image: doctorImages["9"],
     isVerified: true,
     averageRating: 4.6,
     totalVotes: 140,
@@ -167,7 +175,7 @@ const doctorsData: Doctor[] = [
   {
     id: "10",
     name: "دکتر فاطمه قاسمی",
-    image: "/getImage/doctors/doctor10.jpg",
+    image: doctorImages["10"],
     isVerified: true,
     averageRating: 4.9,
     totalVotes: 187,

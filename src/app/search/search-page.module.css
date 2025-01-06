@@ -171,6 +171,7 @@
 .avatar {
   border-radius: 50%;
   object-fit: cover;
+  margin: 0 1rem;
 }
 
 .verified-badge {
@@ -234,11 +235,11 @@
 }
 
 .badge {
-  background: #f3f4f6;
+  background: #f3f4f665;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.9rem;
-  color: #4b5563;
+  color: #e5e7eb;
 }
 
 .address {
@@ -255,7 +256,7 @@
 }
 
 .availability {
-  color: #059669;
+  color: #a2a7a5;
   font-size: 0.9rem;
 }
 

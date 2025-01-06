@@ -2,8 +2,11 @@
 
 import { NextPage } from "next";
 import { useState } from "react";
+
 import styles from "./search-page.module.css";
+
 import { useDoctors } from "@/contexts/DoctorsContext";
+
 import Image from "next/image";
 
 interface ExtendedFilters {
@@ -196,7 +199,7 @@ const SearchPage: NextPage = () => {
                   <Image
                     src={doctor.image}
                     alt={doctor.name}
-                    width={100}
+                    width={100} 
                     height={100}
                     className={styles.avatar}
                   />
