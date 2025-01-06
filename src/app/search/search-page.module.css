@@ -133,11 +133,19 @@
 
 .result-card {
   max-height: fit-content;
+  max-height: 260px;
   padding: 1rem;
   border: 1px solid var(--color-gray-20) !important;
   border-radius: var(--border-radius) !important;
   background-color: var(--color-gray-16) !important;
 }
+
+@media (max-width: 768px) {
+  .result-card {
+    max-height: 360px;
+  }
+}
+
 .result-card-info {
   display: flex;
   flex-direction: row;

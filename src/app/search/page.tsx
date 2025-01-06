@@ -52,8 +52,6 @@ const SearchPage: NextPage = () => {
 
   return (
     <div className={styles["search-container"]}>
-      <h1 className="text-2xl font-bold mb-6">جست و جو</h1>
-
       <form onSubmit={handleSearch} className={styles["search-form"]}>
         <div className={styles.prefix}>
           <svg
@@ -199,7 +197,7 @@ const SearchPage: NextPage = () => {
                   <Image
                     src={doctor.image}
                     alt={doctor.name}
-                    width={100} 
+                    width={100}
                     height={100}
                     className={styles.avatar}
                   />
