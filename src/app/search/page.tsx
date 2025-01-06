@@ -74,7 +74,7 @@ const SearchPage: NextPage = () => {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="نام پزشک یا تخصص را جستجو کنید..."
+          placeholder=" لطفا نام پزشک را جستجو کنید..."
           className={styles.input}
           dir="rtl"
         />
