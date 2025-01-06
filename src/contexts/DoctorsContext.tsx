@@ -6,7 +6,7 @@ const doctorImages = Array.from({ length: 10 }, (_, i) => {
   const index = i + 1;
   return {
     id: String(index),
-    image: require(`@/assets/doctors/doctor${index}.webp`).default.src,
+    image: `/doctors/doctor${index}.webp`,
   };
 }).reduce((acc, { id, image }) => ({ ...acc, [id]: image }), {});
 
