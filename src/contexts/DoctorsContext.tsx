@@ -210,6 +210,7 @@ interface FilterOptions {
   location: string;
   priceRange: string;
   experience: string;
+  rating: string;
 }
 
 const DoctorsContext = createContext<DoctorsContextType | undefined>(undefined);
@@ -277,6 +278,12 @@ export function DoctorsProvider({ children }: { children: ReactNode }) {
           if (doctor.visitFee < Number(min) || doctor.visitFee > Number(max))
             return false;
         }
+      }
+
+      // Rating filter
+      if (filters.rating) {
+        const minRating = parseFloat(filters.rating);
+        if (doctor.averageRating < minRating) return false;
       }
 
       return true;
