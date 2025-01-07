@@ -42,4 +42,4 @@ const SearchForm = ({ searchQuery, setSearchQuery }: SearchFormProps) => {
   );
 };
 
-export default SearchForm; 
+export default SearchForm;
