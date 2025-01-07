@@ -2,13 +2,17 @@
 
 import { createContext, useContext, ReactNode, useMemo } from "react";
 
-const doctorImages = Array.from({ length: 10 }, (_, i) => {
+interface DoctorImage {
+  [key: string]: string;
+}
+
+const doctorImages: DoctorImage = Array.from({ length: 10 }, (_, i) => {
   const index = i + 1;
   return {
     id: String(index),
     image: `/doctors/doctor${index}.webp`,
   };
-}).reduce((acc, { id, image }) => ({ ...acc, [id]: image }), {});
+}).reduce((acc, { id, image }) => ({ ...acc, [id]: image }), {} as DoctorImage);
 
 export interface Doctor {
   id: string;
