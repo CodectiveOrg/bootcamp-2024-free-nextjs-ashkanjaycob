@@ -13,4 +13,4 @@ export interface Doctor {
   experience: number;
   location: string;
   visitFee: number;
-} 
+}

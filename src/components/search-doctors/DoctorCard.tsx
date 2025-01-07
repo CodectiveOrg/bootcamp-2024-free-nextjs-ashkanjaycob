@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "@/app/search/search-page.module.css";
-import { Doctor } from "@/types/Doctor"; 
+import { Doctor } from "@/types/Doctor";
 
 interface DoctorCardProps {
   doctor: Doctor;
