@@ -1,0 +1,261 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    inline-size: min(50rem, 100%);
+    padding-inline: 1rem;
+    border: 1px solid var(--color-gray-20);
+    border-radius: 999rem;
+
+    &:focus-within {
+      border-color: var(--color-primary);
+
+      .prefix {
+        color: var(--color-primary);
+      }
+    }
+
+    .prefix {
+      display: grid;
+      align-items: center;
+      font-size: var(--fz-500);
+    }
+
+    .input {
+      flex: 1 1 0;
+      background-color: transparent;
+      padding: 1rem;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .divider {
+      background-color: var(--color-gray-20);
+      block-size: 2em;
+      inline-size: 1px;
+    }
+  }
+
+  .search-content {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    inline-size: min(80rem, 100%);
+
+    .filter-section {
+      max-height: fit-content;
+      inline-size: 250px;
+      padding: 1rem;
+      background-color: var(--color-gray-16);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--color-gray-20);
+
+      @media (min-width: 768px) {
+        position: sticky;
+        top: 2rem;
+      }
+
+      .filter-title {
+        font-size: var(--fz-500);
+        font-weight: 600;
+        margin-block-end: 1rem;
+      }
+
+      .filter-group {
+        margin-block-end: 1rem;
+
+        label {
+          display: block;
+          margin-block-end: 0.5rem;
+        }
+
+        select {
+          inline-size: 100%;
+          padding: 0.5rem;
+          border: 1px solid var(--color-gray-20);
+          border-radius: var(--border-radius);
+          background-color: var(--color-gray-12);
+          color: inherit;
+        }
+      }
+    }
+
+    .results-section {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      gap: 1rem;
+
+      .result-card {
+        display: flex;
+        padding: 1rem;
+        max-height: 260px;
+        border: 1px solid var(--color-gray-20) !important;
+        border-radius: var(--border-radius) !important;
+        background-color: var(--color-gray-16) !important;
+        transition: transform 0.2s;
+
+        @media (max-width: 768px) {
+          max-height: 360px;
+        }
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .doctor-image {
+          position: relative;
+          margin-right: 1rem;
+
+          .avatar {
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 1rem;
+          }
+
+          .verified-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: #0070f3;
+            background: white;
+            border-radius: 50%;
+            font-size: 1rem;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0070f3;
+          }
+        }
+
+        .doctor-info {
+          flex: 1;
+
+          .doctor-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+          }
+
+          .doctor-brief {
+            color: #666;
+            margin-bottom: 0.5rem;
+          }
+
+          .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+
+            .rating {
+              display: flex;
+              align-items: center;
+              gap: 0.25rem;
+              color: #f59e0b;
+            }
+
+            .total-votes {
+              color: #666;
+              font-size: 0.9rem;
+            }
+          }
+
+          .badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+
+            .badge {
+              background: #f3f4f665;
+              padding: 0.25rem 0.75rem;
+              border-radius: 1rem;
+              font-size: 0.9rem;
+              color: #e5e7eb;
+            }
+          }
+
+          .address {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .appointment-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+
+            .availability {
+              color: #a2a7a5;
+              font-size: 0.9rem;
+            }
+
+            .visit-fee {
+              color: #e5e7eb;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.error-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid var(--color-gray-20);
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray-16);
+  min-height: 200px;
+
+  .error-content {
+    text-align: center;
+
+    .error-emoji {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: var(--fz-500);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--color-gray-80);
+    }
+
+    p {
+      color: var(--color-gray-60);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .search-content {
+    flex-direction: column;
+
+    .filter-section {
+      inline-size: 100%;
+    }
+  }
+}

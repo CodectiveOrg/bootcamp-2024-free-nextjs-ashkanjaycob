@@ -8,6 +8,8 @@ import "@/styles/typography.css";
 import "./globals.css";
 
 import FooterComponent from "@/components/footer/footer.component";
+import { DoctorsProvider } from "@/contexts/DoctorsContext";
+
 const vazirmatn = Vazirmatn({
   subsets: ["latin", "arabic"],
   display: "swap",
@@ -26,12 +28,14 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.className}>
       <body>
-        <HeaderComponent />
-        <main>{children}</main>
-        <p className="tagline">
-          نوبت دهی پزشکی، سامانه نوبت دهی اینترنتی بیمارستان و پزشکان
-        </p>
-        <FooterComponent />
+        <DoctorsProvider>
+          <HeaderComponent />
+          <main>{children}</main>
+          <p className="tagline">
+            نوبت دهی پزشکی، سامانه نوبت دهی اینترنتی بیمارستان و پزشکان
+          </p>
+          <FooterComponent />
+        </DoctorsProvider>
       </body>
     </html>
   );
