@@ -1,15 +1,131 @@
 .container {
-  padding: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.header {
+  background-color: var(--color-gray-20);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.doctorInfo {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.avatar {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.mainInfo {
+  flex: 1;
+}
+
+.name {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.verified {
+  color: #0070f3;
+  background-color: var(--color-gray-20);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.brief {
+  color: #666;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.votes {
+  color: #666;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.section {
+  background-color: var(--color-gray-20);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.address {
+  color: #666;
+  line-height: 1.6;
+}
+
+.fee {
+  font-size: 1.2rem;
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge {
+  background-color: var(--color-gray-20);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.appointment {
+  color: #22c55e;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .doctorInfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  p {
-    font-size: 1.1rem;
-    color: var(--color-gray-70);
+  .rating {
+    justify-content: center;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
   }
 }
