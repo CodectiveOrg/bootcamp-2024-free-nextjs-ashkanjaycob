@@ -33,7 +33,7 @@ export interface Doctor {
 
 const doctorsData: Doctor[] = [
   {
-    id: "1",
+    id: "1234567",
     name: "دکتر علی محمدی",
     image: doctorImages["1"],
     isVerified: true,
@@ -49,7 +49,7 @@ const doctorsData: Doctor[] = [
     visitFee: 250000,
   },
   {
-    id: "2",
+    id: "2345678",
     name: "دکتر سارا احمدی",
     image: doctorImages["2"],
     isVerified: true,
@@ -65,7 +65,7 @@ const doctorsData: Doctor[] = [
     visitFee: 180000,
   },
   {
-    id: "3",
+    id: "3456789",
     name: "دکتر رضا کریمی",
     image: doctorImages["3"],
     isVerified: true,
@@ -81,7 +81,7 @@ const doctorsData: Doctor[] = [
     visitFee: 220000,
   },
   {
-    id: "4",
+    id: "4567890",
     name: "دکتر مریم حسینی",
     image: doctorImages["4"],
     isVerified: true,
@@ -97,7 +97,7 @@ const doctorsData: Doctor[] = [
     visitFee: 150000,
   },
   {
-    id: "5",
+    id: "5678901",
     name: "دکتر امیر رضایی",
     image: doctorImages["5"],
     isVerified: true,
@@ -113,7 +113,7 @@ const doctorsData: Doctor[] = [
     visitFee: 300000,
   },
   {
-    id: "6",
+    id: "6789012",
     name: "دکتر زهرا صابری",
     image: doctorImages["6"],
     isVerified: true,
@@ -129,7 +129,7 @@ const doctorsData: Doctor[] = [
     visitFee: 230000,
   },
   {
-    id: "7",
+    id: "7890123",
     name: "دکتر حسن نادری",
     image: doctorImages["7"],
     isVerified: true,
@@ -145,7 +145,7 @@ const doctorsData: Doctor[] = [
     visitFee: 280000,
   },
   {
-    id: "8",
+    id: "8901234",
     name: "دکتر لیلا شریفی",
     image: doctorImages["8"],
     isVerified: true,
@@ -161,7 +161,7 @@ const doctorsData: Doctor[] = [
     visitFee: 250000,
   },
   {
-    id: "9",
+    id: "9012345",
     name: "دکتر محمد عباسی",
     image: doctorImages["9"],
     isVerified: true,
@@ -177,7 +177,7 @@ const doctorsData: Doctor[] = [
     visitFee: 270000,
   },
   {
-    id: "10",
+    id: "0123456",
     name: "دکتر فاطمه قاسمی",
     image: doctorImages["10"],
     isVerified: true,

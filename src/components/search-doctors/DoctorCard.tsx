@@ -1,6 +1,8 @@
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "@/app/search/search-page.module.css";
 import { Doctor } from "@/types/Doctor";
+import Button from "@/components/ui/Button";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -8,6 +10,13 @@ interface DoctorCardProps {
 }
 
 const DoctorCard = ({ doctor, formatAvailability }: DoctorCardProps) => {
+  const router = useRouter();
+
+  const handleAppointment = () => {
+    console.log(doctor);
+    router.push(`/doctor/${doctor.id}`);
+  };
+
   return (
     <div className={styles["result-card"]}>
       <div className={styles["doctor-image"]}>
@@ -48,9 +57,9 @@ const DoctorCard = ({ doctor, formatAvailability }: DoctorCardProps) => {
           <span className={styles.availability}>
             {formatAvailability(doctor.firstAvailableAppointment)}
           </span>
-          <span className={styles["visit-fee"]}>
-            ویزیت: {doctor.visitFee.toLocaleString()} تومان
-          </span>
+          <Button variant="primary" size="medium" onClick={handleAppointment}>
+            دریافت نوبت
+          </Button>
         </div>
       </div>
     </div>
